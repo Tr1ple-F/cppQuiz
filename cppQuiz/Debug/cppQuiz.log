@@ -1,0 +1,2 @@
+﻿  main.cpp
+C:\Users\Finlay\Desktop\workspace\visualstudio\cppQuiz\cppQuiz\main.cpp(1,1): fatal error C1854: cannot overwrite information formed during creation of the precompiled header in object file: 'C:\Users\Finlay\Desktop\workspace\visualstudio\cppQuiz\cppQuiz\Debug\main.obj'
