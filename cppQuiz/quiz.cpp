@@ -1,23 +1,27 @@
 #include "quiz.h"
 
-Quiz::Quiz(std::string quizTitle, Question* questions, int questionCount)
-{
-	this->quizTitle = quizTitle;
-	this->questions = questions;
-	this->questionCount = questionCount;
-}
+namespace cpp_quiz {
 
-std::string Quiz::getQuizTitle()
-{
-	return this->quizTitle;
-}
+	Quiz::Quiz(std::string quizTitle, Question* questions, int questionCount)
+	{
+		this->quizTitle = quizTitle;
+		this->questions = questions;
+		this->questionCount = questionCount;
+	}
 
-Question Quiz::getQuestionAtIndex(int index)
-{
-	return *(this->questions+index);
-}
+	std::string Quiz::getQuizTitle()
+	{
+		return this->quizTitle;
+	}
 
-int Quiz::getQuestionCount()
-{
-	return this->questionCount;
+	Question Quiz::getQuestionAtIndex(int index)
+	{
+		return *(this->questions + index);
+	}
+
+	int Quiz::getQuestionCount()
+	{
+		return this->questionCount;
+	}
+
 }
