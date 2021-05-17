@@ -145,11 +145,16 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="question.cpp" />
     <ClCompile Include="quiz.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precompile.h" />
     <ClInclude Include="question.h" />
     <ClInclude Include="quiz.h" />
+    <ClInclude Include="utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="example_quiz.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

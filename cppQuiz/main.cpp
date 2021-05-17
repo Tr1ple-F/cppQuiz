@@ -1,7 +1,10 @@
 #include "precompile.h"
 
 int main() {
-	int a;
+	std::string a;
+	std::string b;
 	std::cin >> a;
+	std::cout << a;
+	std::cin >> b;
 	return 0;
 }

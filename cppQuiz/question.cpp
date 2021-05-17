@@ -10,7 +10,7 @@ namespace cpp_quiz {
 
 		// Shuffle options array
 		std::vector<int> order(optionCount);
-		for (size_t i = 0; i < optionCount; i++)
+		for (int i = 0; i < optionCount; i++)
 		{
 			order.push_back(i);
 		}
