@@ -143,10 +143,12 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="question.cpp" />
+    <ClCompile Include="quiz.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precompile.h" />
     <ClInclude Include="question.h" />
+    <ClInclude Include="quiz.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
