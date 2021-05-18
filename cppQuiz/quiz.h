@@ -7,13 +7,14 @@ namespace cpp_quiz {
 
 	class Quiz {
 	public:
-		Quiz(std::string, std::vector<Question>);
+		Quiz(std::string, std::vector<Question*>*);
+		~Quiz();
 		std::string getQuizTitle();
-		Question getQuestionAtIndex(int);
+		Question* getQuestionAtIndex(int);
 		int getQuestionCount();
 	private:
 		std::string quizTitle;
-		std::vector<Question> questions;
+		std::vector<Question*>* questions;
 	};
 
 }

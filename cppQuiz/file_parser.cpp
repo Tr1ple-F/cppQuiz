@@ -7,16 +7,17 @@ namespace cpp_quiz {
 	namespace file_parser {
 	
 		Quiz* loadQuizFromFile(std::string fileName) {
+
 			return 0;
 		}
 
-		Question parseQuestionFromLine(std::string line) {
+		Question* parseQuestionFromLine(std::string line) {
 			std::vector<std::string> subsets = *utils::split(line, "#");
 			if (subsets.size() >= 4)
 			{
 				int options = std::stoi(subsets[0]);
 				std::string title = subsets[1];
-				std::vector<std::string> answers(options);
+				std::vector<std::string>* answers = new std::vector<std::string>(options);
 				int correctAnswer = 0;
 				for (int i = 0; i < options; i++)
 				{
@@ -33,11 +34,12 @@ namespace cpp_quiz {
 							correctAnswer = i;
 							option.erase(0, 1);
 						}
-						answers[i] = option;
+						(*answers)[i] = option;
 					}
 				}
 				delete& subsets;
-				return Question(title, answers, correctAnswer);
+				Question* q = new Question(title, answers, correctAnswer);
+				return q;
 			}
 			else {
 				log::error("Not enough options");
