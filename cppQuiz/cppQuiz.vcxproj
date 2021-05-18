@@ -149,6 +149,7 @@
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="file_parser.h" />
     <ClInclude Include="log.h" />
     <ClInclude Include="precompile.h" />
     <ClInclude Include="question.h" />

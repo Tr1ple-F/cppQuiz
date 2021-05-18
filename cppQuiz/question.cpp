@@ -11,7 +11,7 @@ namespace cpp_quiz {
 		std::vector<int> order(answers->size());
 		for (int i = 0; i < answers->size(); i++)
 		{
-			order.push_back(i);
+			order[i] = i;
 		}
 
 		if (shufflingEnabled) {
