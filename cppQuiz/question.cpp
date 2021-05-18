@@ -19,6 +19,7 @@ namespace cpp_quiz {
 			shuffle(order.begin(), order.end(), std::default_random_engine(seed));
 		}
 
+		this->correctAnswer = correctAnswer;
 		this->order = order;
 	}
 
