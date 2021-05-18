@@ -2,11 +2,10 @@
 
 namespace cpp_quiz {
 
-	Quiz::Quiz(std::string quizTitle, Question* questions, int questionCount)
+	Quiz::Quiz(std::string quizTitle, std::vector<Question> questions)
 	{
 		this->quizTitle = quizTitle;
 		this->questions = questions;
-		this->questionCount = questionCount;
 	}
 
 	std::string Quiz::getQuizTitle()
@@ -16,12 +15,12 @@ namespace cpp_quiz {
 
 	Question Quiz::getQuestionAtIndex(int index)
 	{
-		return *(this->questions + index);
+		return this->questions[index];
 	}
 
 	int Quiz::getQuestionCount()
 	{
-		return this->questionCount;
+		return this->questions.size();
 	}
 
 }

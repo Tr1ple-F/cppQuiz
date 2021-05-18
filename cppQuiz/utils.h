@@ -9,6 +9,8 @@ namespace cpp_quiz {
 		
 		std::vector<std::string>* split(std::string, std::string);
 
+		bool startsWith(std::string, std::string);
+
 	}
 
 }

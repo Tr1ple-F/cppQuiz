@@ -2,15 +2,14 @@
 
 namespace cpp_quiz {
 
-	Question::Question(std::string title, std::string* answers, int optionCount, int correctAnswer, bool shufflingEnabled)
+	Question::Question(std::string title, std::vector<std::string> answers, int correctAnswer, bool shufflingEnabled)
 	{
 		this->title = title;
 		this->answers = answers;
-		this->optionCount = optionCount;
 
 		// Shuffle options array
-		std::vector<int> order(optionCount);
-		for (int i = 0; i < optionCount; i++)
+		std::vector<int> order(answers.size());
+		for (int i = 0; i < answers.size(); i++)
 		{
 			order.push_back(i);
 		}
@@ -30,12 +29,12 @@ namespace cpp_quiz {
 
 	std::string Question::getItemAtIndex(int index)
 	{
-		return *(this->answers + order[index]);
+		return this->answers[order[index]];
 	}
 
 	int Question::getOptionCount()
 	{
-		return this->optionCount;
+		return this->answers.size();
 	}
 
 	bool Question::isCorrect(int answer)
