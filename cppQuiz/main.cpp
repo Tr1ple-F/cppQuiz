@@ -28,7 +28,6 @@ int main() {
 			}
 		}
 		std::cout << "Your score: " << score;
-		std::cin >> score;
 		delete quiz;
 	}
 	return 0;
