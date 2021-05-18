@@ -7,8 +7,47 @@ namespace cpp_quiz {
 	namespace file_parser {
 	
 		Quiz* loadQuizFromFile(std::string fileName) {
-
-			return 0;
+			std::ifstream file(fileName);
+			if (file.is_open()) 
+			{
+				std::string line;
+				int questionCount;
+				std::string title;
+				if (std::getline(file, line))
+				{
+					std::vector<std::string> subsets = *utils::split(line, "#");
+					if (subsets.size() != 2) {
+						log::error("First line doesn't match format QUESTIONS_COUNT#QUIZ_TITLE");
+						delete& subsets;
+						return 0;
+					}
+					else {
+						questionCount = std::stoi(subsets[0]);
+						title = subsets[1];
+						delete& subsets;
+					}
+				}
+				std::vector<Question*>* questions = new std::vector<Question*>(questionCount);
+				while (std::getline(file, line)) 
+				{
+					Question* q = parseQuestionFromLine(line);
+					if (q != 0) {
+						questions->push_back(q);
+					}
+					else 
+					{
+						delete questions;
+						return 0;
+					}
+				}
+				Quiz* quiz = new Quiz(title, questions);
+				return quiz;
+			}
+			else 
+			{
+				log::error("Unable to open file");
+				return 0;
+			}
 		}
 
 		Question* parseQuestionFromLine(std::string line) {
