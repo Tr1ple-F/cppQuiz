@@ -48,4 +48,4 @@ namespace cpp_quiz {
 		return order[answer] == this->correctAnswer;
 	}
 
-}
+} // namespace cpp_quiz

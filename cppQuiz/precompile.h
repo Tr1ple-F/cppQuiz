@@ -1,5 +1,4 @@
-#ifndef CPPQUIZ_PRECOMPILE_H
-#define CPPQUIZ_PRECOMPILE_H
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -8,5 +7,3 @@
 #include <random>
 #include <algorithm>
 #include <fstream>
-
-#endif

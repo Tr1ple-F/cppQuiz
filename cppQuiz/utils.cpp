@@ -26,6 +26,6 @@ namespace cpp_quiz {
 			}
 		}
 
-	}
+	} // namespace utils
 
-}
+} // namespace cpp_quiz

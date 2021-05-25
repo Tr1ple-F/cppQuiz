@@ -32,4 +32,4 @@ namespace cpp_quiz {
 		return this->questions->size();
 	}
 
-}
+} // namespace cpp_quiz

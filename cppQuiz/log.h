@@ -1,5 +1,4 @@
-#ifndef CPPQUIZ_LOG_H
-#define CPPQUIZ_LOG_H
+#pragma once
 
 #include "precompile.h"
 
@@ -9,8 +8,6 @@ namespace cpp_quiz {
 
 		void error(std::string);
 
-	}
+	} // namespace log
 
-}
-
-#endif
+} // namespace cpp_quiz

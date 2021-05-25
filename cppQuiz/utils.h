@@ -1,5 +1,4 @@
-#ifndef CPPQUIZ_UTILS_H
-#define CPPQUIZ_UTILS_H
+#pragma once
 
 #include "precompile.h"
 
@@ -11,8 +10,6 @@ namespace cpp_quiz {
 
 		bool startsWith(std::string, std::string);
 
-	}
+	} // namespace utils
 
-}
-
-#endif
+} // namespace cpp_quiz

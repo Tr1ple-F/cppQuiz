@@ -88,6 +88,6 @@ namespace cpp_quiz {
 			}
 		}
 
-	}
+	} // namespace file_parser
 
-}
+} // namespace cpp_quiz

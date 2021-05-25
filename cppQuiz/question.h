@@ -1,5 +1,4 @@
-#ifndef CPPQUIZ_QUESTION_H
-#define CPPQUIZ_QUESTION_H
+#pragma once
 
 #include "precompile.h"
 
@@ -20,6 +19,4 @@ namespace cpp_quiz {
 		int correctAnswer;
 	};
 
-}
-
-#endif
+} // namespace cpp_quiz

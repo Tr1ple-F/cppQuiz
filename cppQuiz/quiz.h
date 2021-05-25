@@ -1,5 +1,4 @@
-#ifndef CPPQUIZ_QUIZ_H
-#define CPPQUIZ_QUIZ_H
+#pragma once
 
 #include "question.h"
 
@@ -17,6 +16,4 @@ namespace cpp_quiz {
 		std::vector<Question*>* questions;
 	};
 
-}
-
-#endif
+} // namespace cpp_quiz

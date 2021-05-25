@@ -8,6 +8,6 @@ namespace cpp_quiz {
 			std::cout << "ERROR OCCURED: " << msg;
 		}
 
-	}
+	} // namespace log
 
-}
+} // namespace cpp_quiz

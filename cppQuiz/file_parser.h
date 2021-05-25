@@ -1,5 +1,4 @@
-#ifndef CPPQUIZ_FILE_PARSER_H
-#define CPPQUIZ_FILE_PARSER_H
+#pragma once
 
 #include "quiz.h"
 #include "utils.h"
@@ -13,8 +12,6 @@ namespace cpp_quiz {
 
 		Question* parseQuestionFromLine(std::string);
 
-	}
+	} // namespace file_parser
 
-}
-
-#endif
+} // namespace cpp_quiz
