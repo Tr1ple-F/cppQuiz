@@ -13,16 +13,14 @@ namespace cpp_quiz {
 				std::string title;
 				if (std::getline(file, line))
 				{
-					std::vector<std::string>* subsets = utils::split(line, "#");
+					std::unique_ptr<const std::vector<std::string>> subsets = utils::split(line, '#');
 					if (subsets->size() != 2) {
 						log::error("First line doesn't match format QUESTIONS_COUNT#QUIZ_TITLE");
-						delete subsets;
 						return 0;
 					}
 					else {
 						questionCount = std::stoi((*subsets)[0]);
 						title = (*subsets)[1];
-						delete subsets;
 					}
 				}
 				std::vector<Question*>* questions = new std::vector<Question*>(questionCount);
@@ -51,7 +49,7 @@ namespace cpp_quiz {
 		}
 
 		Question* parseQuestionFromLine(std::string line) {
-			std::vector<std::string>* subsets = utils::split(line, "#");
+			std::unique_ptr<const std::vector<std::string>> subsets = utils::split(line, '#');
 			if (subsets->size() >= 4)
 			{
 				int options = std::stoi((*subsets)[0]);
@@ -63,7 +61,6 @@ namespace cpp_quiz {
 					if (i >= subsets->size())
 					{
 						log::error("Missing answer");
-						delete subsets;
 						return 0;
 					}
 					else
@@ -77,13 +74,11 @@ namespace cpp_quiz {
 						(*answers)[i] = option;
 					}
 				}
-				delete subsets;
 				Question* q = new Question(title, answers, correctAnswer);
 				return q;
 			}
 			else {
 				log::error("Not enough options");
-				delete subsets;
 				return 0;
 			}
 		}

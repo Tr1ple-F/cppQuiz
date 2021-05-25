@@ -6,9 +6,9 @@ namespace cpp_quiz {
 	
 	namespace utils {
 		
-		std::vector<std::string>* split(std::string, std::string);
+		std::unique_ptr<const std::vector<std::string>> split(const std::string&, const char&);
 
-		bool startsWith(std::string, std::string);
+		bool startsWith(const std::string&, const std::string&);
 
 	} // namespace utils
 
