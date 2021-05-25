@@ -4,7 +4,7 @@ namespace cpp_quiz {
 
 	namespace file_parser {
 	
-		Quiz* loadQuizFromFile(std::string fileName) {
+		Quiz* loadQuizFromFile(const std::string& fileName) {
 			std::ifstream file(fileName);
 			if (file.is_open()) 
 			{
@@ -48,7 +48,7 @@ namespace cpp_quiz {
 			}
 		}
 
-		Question* parseQuestionFromLine(std::string line) {
+		Question* parseQuestionFromLine(const std::string& line) {
 			std::unique_ptr<const std::vector<std::string>> subsets = utils::split(line, '#');
 			if (subsets->size() >= 4)
 			{

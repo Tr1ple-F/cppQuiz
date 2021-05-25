@@ -6,7 +6,7 @@ namespace cpp_quiz {
 
 	namespace log {
 
-		void error(std::string&);
+		void error(const std::string&);
 
 	} // namespace log
 
