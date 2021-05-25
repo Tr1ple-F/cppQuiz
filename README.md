@@ -1,2 +1,2 @@
 # cppQuiz
-A beginner's C++ project.
+A C++ quiz project.
