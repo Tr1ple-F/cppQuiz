@@ -2,14 +2,13 @@
 
 namespace cpp_quiz {
 
-	Question::Question(std::string title, std::vector<std::string>* answers, int correctAnswer, bool shufflingEnabled)
+	Question::Question(std::string title, std::unique_ptr<std::vector<std::string>> a, int correctAnswer, bool shufflingEnabled) : answers(std::move(a))
 	{
 		this->title = title;
-		this->answers = answers;
 
 		// Shuffle options array
-		std::vector<int> order(answers->size());
-		for (int i = 0; i < answers->size(); i++)
+		std::vector<int> order(this->answers->size());
+		for (int i = 0; i < this->answers->size(); i++)
 		{
 			order[i] = i;
 		}
@@ -25,7 +24,6 @@ namespace cpp_quiz {
 
 	Question::~Question()
 	{
-		delete answers;
 	}
 
 	const std::string& Question::getTitle() const

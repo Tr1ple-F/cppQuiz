@@ -6,7 +6,7 @@ namespace cpp_quiz {
 
 	class Question {
 	public:
-		Question(std::string, std::vector<std::string>*, int, bool = true); // standard constructor
+		Question(std::string, std::unique_ptr<std::vector<std::string>>, int, bool = true); // standard constructor
 		~Question(); // destructor
 		const std::string& getTitle() const;
 		const std::string& getItemAtIndex(int) const;
@@ -14,7 +14,7 @@ namespace cpp_quiz {
 		const bool isCorrect(int) const;
 	private:
 		std::string title;
-		std::vector<std::string>* answers;
+		std::unique_ptr<std::vector<std::string>> answers;
 		std::vector<int> order;
 		int correctAnswer;
 	};
