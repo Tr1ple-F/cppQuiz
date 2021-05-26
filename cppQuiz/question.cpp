@@ -28,22 +28,22 @@ namespace cpp_quiz {
 		delete answers;
 	}
 
-	std::string Question::getTitle()
+	const std::string& Question::getTitle() const
 	{
 		return this->title;
 	}
 
-	std::string Question::getItemAtIndex(int index)
+	const std::string& Question::getItemAtIndex(int index) const
 	{
 		return (*(this->answers))[order[index]];
 	}
 
-	int Question::getOptionCount()
+	const int Question::getOptionCount() const
 	{
 		return this->answers->size();
 	}
 
-	bool Question::isCorrect(int answer)
+	const bool Question::isCorrect(int answer) const
 	{
 		return order[answer] == this->correctAnswer;
 	}

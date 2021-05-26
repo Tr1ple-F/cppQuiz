@@ -38,8 +38,7 @@ namespace cpp_quiz {
 					}
 					i += 1;
 				}
-				Quiz* quiz = new Quiz(title, questions);
-				return quiz;
+				return new Quiz(title, questions);
 			}
 			else 
 			{
@@ -74,8 +73,7 @@ namespace cpp_quiz {
 						(*answers)[i] = option;
 					}
 				}
-				Question* q = new Question(title, answers, correctAnswer);
-				return q;
+				return new Question(title, answers, correctAnswer);
 			}
 			else {
 				log::error("Not enough options");

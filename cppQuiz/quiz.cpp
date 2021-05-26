@@ -17,17 +17,17 @@ namespace cpp_quiz {
 		delete questions;
 	}
 
-	std::string Quiz::getQuizTitle()
+	const std::string& Quiz::getQuizTitle() const
 	{
 		return this->quizTitle;
 	}
 
-	Question* Quiz::getQuestionAtIndex(int index)
+	const Question* Quiz::getQuestionAtIndex(int index) const
 	{
 		return (*(this->questions))[index];
 	}
 
-	int Quiz::getQuestionCount()
+	const int Quiz::getQuestionCount() const
 	{
 		return this->questions->size();
 	}

@@ -8,9 +8,9 @@ namespace cpp_quiz {
 	public:
 		Quiz(std::string, std::vector<Question*>*);
 		~Quiz();
-		std::string getQuizTitle();
-		Question* getQuestionAtIndex(int);
-		int getQuestionCount();
+		const std::string& getQuizTitle() const;
+		const Question* getQuestionAtIndex(int) const;
+		const int getQuestionCount() const;
 	private:
 		std::string quizTitle;
 		std::vector<Question*>* questions;

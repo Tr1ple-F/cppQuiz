@@ -13,9 +13,9 @@ int main() {
 			cpp_quiz::Question* question = quiz->getQuestionAtIndex(i);
 			int answer;
 			std::cout << question->getTitle() << "\n";
-			for (int i = 0; i < question->getOptionCount(); i++)
+			for (int j = 0; j < question->getOptionCount(); j++)
 			{
-				std::cout << i << ") " << question->getItemAtIndex(i) << "\n";
+				std::cout << j << ") " << question->getItemAtIndex(j) << "\n";
 			}
 			std::cout << "Your answer: ";
 			std::cin >> answer;
