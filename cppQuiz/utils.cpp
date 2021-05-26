@@ -17,7 +17,7 @@ namespace cpp_quiz {
 			return out;
 		}
 
-		bool startsWith(const std::string& content, const std::string& token) {
+		const bool startsWith(const std::string& content, const std::string& token) {
 			if (content.rfind(token, 0) == 0) {
 				return true;
 			}

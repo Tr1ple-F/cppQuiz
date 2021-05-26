@@ -6,7 +6,7 @@ int main() {
 	std::string filePath;
 	std::cout << "Please enter file path: ";
 	std::cin >> filePath;
-	std::unique_ptr<cpp_quiz::Quiz> quiz = cpp_quiz::file_parser::loadQuizFromFile(filePath);
+	std::unique_ptr<const cpp_quiz::Quiz> quiz = cpp_quiz::file_parser::loadQuizFromFile(filePath);
 	if (quiz != 0) {
 		int score = 0;
 		std::cout << quiz->getQuizTitle() << "\n";

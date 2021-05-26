@@ -8,7 +8,7 @@ namespace cpp_quiz {
 		
 		std::unique_ptr<const std::vector<std::string>> split(const std::string&, const char&);
 
-		bool startsWith(const std::string&, const std::string&);
+		const bool startsWith(const std::string&, const std::string&);
 
 	} // namespace utils
 
