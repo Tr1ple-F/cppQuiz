@@ -1,7 +1,5 @@
 #include "file_parser.h"
 
-typedef cpp_quiz::Quiz Q;
-
 int main() {
 	std::string filePath;
 	std::cout << "Please enter file path: ";
