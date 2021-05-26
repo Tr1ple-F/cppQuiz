@@ -10,7 +10,7 @@ namespace cpp_quiz {
 
 		std::unique_ptr<Quiz> loadQuizFromFile(const std::string&);
 
-		std::unique_ptr<Question> parseQuestionFromLine(const std::string&);
+		std::unique_ptr<Question> parseQuestionFromLine(const std::string&, int);
 
 	} // namespace file_parser
 
