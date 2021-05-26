@@ -10,7 +10,7 @@ int main() {
 		std::cout << quiz->getQuizTitle() << "\n";
 		for (int i = 0; i < quiz->getQuestionCount(); i++)
 		{
-			cpp_quiz::Question* question = quiz->getQuestionAtIndex(i);
+			const cpp_quiz::Question* question = quiz->getQuestionAtIndex(i);
 			int answer;
 			std::cout << question->getTitle() << "\n";
 			for (int j = 0; j < question->getOptionCount(); j++)
