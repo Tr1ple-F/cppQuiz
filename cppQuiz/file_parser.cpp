@@ -52,7 +52,6 @@ namespace cpp_quiz {
 			if (subsets->size() >= 4)
 			{
 				int options = std::stoi((*subsets)[0]);
-				std::string title = (*subsets)[1];
 				std::unique_ptr<std::vector<std::string>> answers = std::make_unique<std::vector<std::string>>(options);
 				int correctAnswer = 0;
 				for (int i = 0; i < options; i++)
@@ -73,7 +72,7 @@ namespace cpp_quiz {
 						(*answers)[i] = option;
 					}
 				}
-				return new Question(title, std::move(answers), correctAnswer);
+				return new Question((*subsets)[1], std::move(answers), correctAnswer);
 			}
 			else {
 				log::error("Not enough options");
