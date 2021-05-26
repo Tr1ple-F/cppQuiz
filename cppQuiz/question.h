@@ -19,7 +19,7 @@ namespace cpp_quiz {
 	private:
 		std::string title;
 		std::unique_ptr<std::vector<std::string>> answers;
-		std::vector<int> order;
+		std::unique_ptr<std::vector<int>> order;
 		int correctAnswer;
 	};
 

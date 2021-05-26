@@ -6,29 +6,27 @@ namespace cpp_quiz {
 	{
 
 		// Shuffle options array
-		std::vector<int> order(this->answers->size());
+		this->order = std::make_unique<std::vector<int>>(this->answers->size());
 		for (int i = 0; i < this->answers->size(); i++)
 		{
-			order[i] = i;
+			(*(this->order))[i] = i;
 		}
 
 		if (shufflingEnabled) {
 			unsigned int seed = std::chrono::system_clock::now().time_since_epoch().count();
-			shuffle(order.begin(), order.end(), std::default_random_engine(seed));
+			shuffle(order->begin(), order->end(), std::default_random_engine(seed));
 		}
-
-		this->order = order;
 	}
 
 	Question::Question(const Question& other) : title(other.title), correctAnswer(other.correctAnswer) // copy constructor
 	{
-		this->order = other.order;
+		this->order = std::make_unique<std::vector<int>>(*(other.order));
 		this->answers = std::make_unique<std::vector<std::string>>(*(other.answers));
 	}
 	
 	Question::Question(Question&& other) noexcept : title(other.title), correctAnswer(other.correctAnswer) // move constructor
 	{
-		this->order = other.order;
+		this->order = std::move(other.order);
 		this->answers = std::move(other.answers);
 	}
 
@@ -41,8 +39,8 @@ namespace cpp_quiz {
 		if (this != &other) 
 		{
 			this->title = other.title;
-			this->order = other.order;
 			this->correctAnswer = other.correctAnswer;
+			this->order = std::make_unique<std::vector<int>>(*(other.order));
 			this->answers = std::make_unique<std::vector<std::string>>(*(other.answers));
 		}
 		return *this;
@@ -53,8 +51,8 @@ namespace cpp_quiz {
 		if (this != &other)
 		{
 			this->title = other.title;
-			this->order = other.order;
 			this->correctAnswer = other.correctAnswer;
+			this->order = std::move(other.order);
 			this->answers = std::move(other.answers);
 		}
 		return *this;
@@ -67,7 +65,7 @@ namespace cpp_quiz {
 
 	const std::string& Question::getItemAtIndex(int index) const
 	{
-		return (*(this->answers))[order[index]];
+		return (*(this->answers))[(*(this->order))[index]];
 	}
 
 	const size_t Question::getOptionCount() const
@@ -77,7 +75,7 @@ namespace cpp_quiz {
 
 	const bool Question::isCorrect(int answer) const
 	{
-		return order[answer] == this->correctAnswer;
+		return (*(this->order))[answer] == this->correctAnswer;
 	}
 
 } // namespace cpp_quiz
