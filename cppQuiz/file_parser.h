@@ -8,9 +8,9 @@ namespace cpp_quiz {
 
 	namespace file_parser {
 
-		Quiz* loadQuizFromFile(const std::string&);
+		std::unique_ptr<Quiz> loadQuizFromFile(const std::string&);
 
-		Question* parseQuestionFromLine(const std::string&);
+		std::unique_ptr<Question> parseQuestionFromLine(const std::string&);
 
 	} // namespace file_parser
 

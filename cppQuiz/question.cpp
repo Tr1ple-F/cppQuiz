@@ -30,9 +30,7 @@ namespace cpp_quiz {
 		this->answers = std::move(other.answers);
 	}
 
-	Question::~Question() // destructor
-	{
-	}
+	Question::~Question() {} // destructor
 
 	Question& Question::operator=(const Question& other) // copy assignment
 	{

@@ -4,7 +4,7 @@ namespace cpp_quiz {
 
 	namespace file_parser {
 	
-		Quiz* loadQuizFromFile(const std::string& fileName) {
+		std::unique_ptr<Quiz> loadQuizFromFile(const std::string& fileName) {
 			std::ifstream file(fileName);
 			if (file.is_open()) 
 			{
@@ -23,22 +23,21 @@ namespace cpp_quiz {
 						title = (*subsets)[1];
 					}
 				}
-				std::vector<Question*>* questions = new std::vector<Question*>(questionCount);
+				std::unique_ptr<std::vector<std::unique_ptr<Question>>> questions = std::make_unique<std::vector<std::unique_ptr<Question>>>(questionCount);
 				int i = 0;
 				while (std::getline(file, line)) 
 				{
-					Question* q = parseQuestionFromLine(line);
+					std::unique_ptr<Question> q = parseQuestionFromLine(line);
 					if (q != 0) {
-						(*questions)[i] = q;
+						(*questions)[i] = std::move(q);
 					}
 					else 
 					{
-						delete questions;
 						return 0;
 					}
 					i += 1;
 				}
-				return new Quiz(title, questions);
+				return std::make_unique<Quiz>(title, std::move(questions));
 			}
 			else 
 			{
@@ -47,7 +46,7 @@ namespace cpp_quiz {
 			}
 		}
 
-		Question* parseQuestionFromLine(const std::string& line) {
+		std::unique_ptr<Question> parseQuestionFromLine(const std::string& line) {
 			std::unique_ptr<const std::vector<std::string>> subsets = utils::split(line, '#');
 			if (subsets->size() >= 4)
 			{
@@ -72,7 +71,7 @@ namespace cpp_quiz {
 						(*answers)[i] = option;
 					}
 				}
-				return new Question((*subsets)[1], std::move(answers), correctAnswer);
+				return std::make_unique<Question>((*subsets)[1], std::move(answers), correctAnswer);
 			}
 			else {
 				log::error("Not enough options");
