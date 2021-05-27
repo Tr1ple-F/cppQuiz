@@ -27,7 +27,7 @@ namespace cpp_quiz {
 					{
 						if (subsets->size() > 2) // Too many #
 						{
-							log::warning("Line 1 contains more than two parameters. All parameters except for the title and question count will be ignored");
+							log::warning("Line 1 contains more than two parameters. All parameters except for the title and question count will be ignored.");
 						}
 						try {
 							questionCount = std::stoi((*subsets)[0]);
@@ -35,7 +35,8 @@ namespace cpp_quiz {
 
 							if (questionCount < 1)
 							{
-								log::error("QUESTION_COUNT needs to be greater than 1. Actual: " + questionCount);
+								std::string msg = std::string("QUESTION_COUNT needs to be greater than 1. Actual: ") + std::to_string(questionCount);
+								log::error(msg);
 								return 0;
 							}
 						}
@@ -47,7 +48,8 @@ namespace cpp_quiz {
 				}
 				else // No lines
 				{
-					log::warning("The file \"" + fileName + "\" is empty");
+					log::error("The file \"" + fileName + "\" is empty");
+					return 0;
 				}
 
 				std::unique_ptr<std::vector<std::unique_ptr<Question>>> questions = std::make_unique<std::vector<std::unique_ptr<Question>>>(questionCount);
@@ -55,11 +57,13 @@ namespace cpp_quiz {
 
 				while (std::getline(file, line)) 
 				{
-					if (i == questionCount) // More lines
+					if (i >= questionCount) // More lines
 					{
-						std::string msg = "Line " + static_cast<size_t>(i) + 2;
+						std::string msg = "Line " + std::to_string(static_cast<size_t>(i) + 2);
 						msg.append(" will be ignored");
 						log::warning(msg);
+						i += 1;
+						continue;
 					}
 
 					std::unique_ptr<Question> q = parseQuestionFromLine(line, i+1);
@@ -75,12 +79,13 @@ namespace cpp_quiz {
 					i += 1;
 				}
 
-				if (i < questionCount - 1) // Not all questions filled
+				if (i < questionCount) // Not all questions filled
 				{
-					std::string msg = "Expected " + questionCount;
-					msg.append(" questions but got ");
-					msg.append("" + static_cast<size_t>(i)+1);
+					std::string msg = "Expected " + std::to_string(questionCount);
+					msg.append(" questions but only got ");
+					msg.append(std::to_string(static_cast<size_t>(i)));
 					log::error(msg);
+					return 0;
 				}
 
 				return std::make_unique<Quiz>(title, std::move(questions));
@@ -101,8 +106,9 @@ namespace cpp_quiz {
 
 					if (options < 2) // Expected at least two answers
 					{
-						std::string msg = "Question " + no;
-						msg.append(": parameter <ANSWER_COUNT> expected a number greater than 1. Actual: " + options);
+						std::string msg = std::string("Question ");
+						msg.append(std::to_string(no));
+						msg.append(": parameter <ANSWER_COUNT> expected a number greater than 1. Actual: ");
 						msg.append((*subsets)[0]);
 						log::error(msg);
 						return 0;
@@ -112,10 +118,14 @@ namespace cpp_quiz {
 					int correctAnswer = 0;
 					for (int i = 0; i < options; i++)
 					{
-						if (static_cast<size_t>(i)+2 >= subsets->size()) // Not enough answers
+						if (static_cast<size_t>(i) >= subsets->size()-2) // Not enough answers
 						{
-							std::string msg = "Question " + no;
-							msg.append(": missing answers. Expected: " + options);
+							std::string msg = std::string("Question ");
+							msg.append(std::to_string(no));
+							msg.append(": missing answers. Expected ");
+							msg.append(std::to_string(options));
+							msg.append(" but only got ");
+							msg.append(std::to_string(subsets->size()-2));
 							log::error(msg);
 							return 0;
 						}
@@ -133,9 +143,12 @@ namespace cpp_quiz {
 
 					if (subsets->size() > 2 + static_cast<size_t>(options)) // More answers than expected
 					{
-						std::string msg = "Question ";
-						msg.append(": more parameters than necessary. Expected " + options);
-						msg.append(" parameters but received " + subsets->size());
+						std::string msg = std::string("Question ");
+						msg.append(std::to_string(no));
+						msg.append(": more answers than necessary. Expected ");
+						msg.append(std::to_string(options));
+						msg.append(" but received ");
+						msg.append(std::to_string(subsets->size() - 2));
 						msg.append(". Additional parameters will be ignored.");
 						log::warning(msg);
 					}
@@ -143,7 +156,8 @@ namespace cpp_quiz {
 					return std::make_unique<Question>((*subsets)[1], std::move(answers), correctAnswer);
 				}
 				catch (std::exception& e) { // Answer count not a number
-					std::string msg = "Question " + no;
+					std::string msg = std::string("Question ");
+					msg.append(std::to_string(no));
 					msg.append(": parameter <ANSWER_COUNT> expected a positive number. Actual: ");
 					msg.append((*subsets)[0]);
 					log::error(msg);
@@ -151,7 +165,8 @@ namespace cpp_quiz {
 				}
 			}
 			else {
-				std::string msg = "Question " + no;
+				std::string msg = std::string("Question ");
+				msg.append(std::to_string(no));
 				msg.append(" doesn't have enough options");
 				log::error(msg);
 				log::info("Question lines should match the format: \"<ANSWER_COUNT>#<QUESTION_TITLE>#<ANSWER_1>#<ANSWER_2>#...#<ANSWER_n>\"");

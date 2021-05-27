@@ -1,6 +1,5 @@
-4#Astrophysik Quiz#USELESS
+4#Astrophysik Quiz
 3#Was ist der durchschnittlich naechste Planet zur Erde?#Merkur#Mars#Venus
 2#Die Erde ist ein Gasplanet#*Nein#Ja
-4#Wie viele Monde hat Jupiter?#1#65#*79#73#USELESS
+4#Wie viele Monde hat Jupiter?#1#65#*79#73
 5#Wie viele Planeten gibt es im Sonnensytem?#6#7#*8#9#10
-

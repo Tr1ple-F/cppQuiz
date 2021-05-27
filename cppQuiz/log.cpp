@@ -5,15 +5,15 @@ namespace cpp_quiz {
 	namespace log {
 
 		void error(const std::string& msg) {
-			std::cout << "ERROR: " << msg << "\n";
+			std::cout << "ERROR: " << msg << std::endl;
 		}
 
 		void warning(const std::string& msg) {
-			std::cout << "WARNING: " << msg << "\n";
+			std::cout << "WARNING: " << msg << std::endl;
 		}
 
 		void info(const std::string& msg) {
-			std::cout << "INFO: " << msg << "\n";
+			std::cout << "INFO: " << msg << std::endl;
 		}
 
 		void log(const Level&& level, const std::string& msg) {
