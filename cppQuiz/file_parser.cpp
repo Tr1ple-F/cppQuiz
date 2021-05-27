@@ -35,13 +35,13 @@ namespace cpp_quiz {
 
 							if (questionCount < 1)
 							{
-								std::string msg = std::string("QUESTION_COUNT needs to be greater than 1. Actual: ") + std::to_string(questionCount);
+								std::string msg = std::string("<QUESTION_COUNT> needs to be greater than 1. Actual: ") + std::to_string(questionCount);
 								log::error(msg);
 								return 0;
 							}
 						}
 						catch (std::exception& e) { // Not a number
-							log::error("The QUESTION_COUNT parameter in line 1 expected an positive integer. Actual: " + (*subsets)[0]);
+							log::error("The <QUESTION_COUNT> parameter in line 1 expected an positive integer. Actual: " + (*subsets)[0]);
 							return 0;
 						}
 					}
